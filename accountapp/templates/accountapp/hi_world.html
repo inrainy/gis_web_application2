@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-=
-=
+
     <div style="margin: 2rem; text-align: center">
 
         <h1>MY NAME IS RAINY AN</h1>
         <p>hi! python!</p>
-    <h3>{{ Text }}</h3>
+
+        <form action="/accounts/hi_world/" method="post">
+            {%  csrf_token %}
+            <input type="submit" class="btn btn-outline-info rounded-pill px-5">
+
+
+        </form>
+        <h3>{{ text }}</h3>
 
     </div>
 
