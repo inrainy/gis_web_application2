@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from accountapp.models import NewModel
 
@@ -13,9 +14,9 @@ def hi_world(request):
         model_instance.text = temp
         model_instance.save()
 
-        return render(request, 'accountapp/hi_world.html',
-                      context={'model_instance':model_instance})
+        return HttpResponseRedirect(reverse('accountapp:hi_world'))
     else:
+        data_list = NewModel.objects.all()
         return render(request, 'accountapp/hi_world.html',
-                      context={'text' : 'GET METHOD!'})
+                      context={'data_list':data_list})
 
