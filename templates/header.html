@@ -5,8 +5,24 @@
     <div class = My_mothers_son_and_second_sister_header_button>
         <span>1</span>
         <span>2</span>
-        <span>3</span>
-        <span>4</span>
+        {% if not user.is_authenticated %}
+        <span>
+            <a href="{% url 'accountapp:login' %}">
+                loginto!
+            </a>
+        </span>
+        <span>
+            <a href="{% url 'accountapp:create' %}">
+                joinato!
+            </a>
+        </span>
+        {% else %}
+        <span>
+            <a href="{% url 'accountapp:logout' %}">
+                logouto!
+            </a>
+        </span>
+        {% endif %}
     </div>
 
 </div>
